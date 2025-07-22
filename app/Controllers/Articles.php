@@ -8,11 +8,16 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Articles extends BaseController
 {
+    protected $articleModel;
+
+    public function __construct()
+    {
+        $this->articleModel = new ArticleModel();
+    }
+
     public function index()
     {
-        $model = new ArticleModel();
-
-        $data = $model->findAll(); // will return associative array
+        $data = $this->articleModel->findAll(); // will return associative array
 
         return view("Articles/index", ["articles" => $data]);
     }
