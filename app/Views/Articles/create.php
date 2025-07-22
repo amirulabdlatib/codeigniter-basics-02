@@ -4,6 +4,15 @@
 <?= $this->section('content'); ?>
 
 <h1>New article</h1>
+
+<?php if (session()->has("errors")): ?>
+    <ul>
+        <?php foreach (session("errors") as $error): ?>
+            <li><?= $error; ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
 <?= form_open("articles/store"); ?>
 
 <label for="title">Title</label>
