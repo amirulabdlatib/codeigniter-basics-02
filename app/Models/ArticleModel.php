@@ -32,7 +32,15 @@ class ArticleModel extends Model
         "title" => "required|max_length[128]",
         "content" => "required|max_length[128]",
     ];
-    protected $validationMessages   = [];
+    protected $validationMessages   = [
+        "title" => [
+            "required" => "Please enter a title",
+            "max_length" => "{param} maximum characters for the {field} field"
+        ],
+        "content" => [
+            "required" => "Please enter some content"
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
