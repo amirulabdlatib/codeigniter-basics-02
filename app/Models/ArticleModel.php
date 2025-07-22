@@ -28,7 +28,10 @@ class ArticleModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        "title" => "required|max_length[128]",
+        "content" => "required|max_length[128]",
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

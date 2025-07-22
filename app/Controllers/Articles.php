@@ -38,6 +38,12 @@ class Articles extends BaseController
 
     public function store()
     {
-        $this->articleModel->insert($this->request->getPost());
+        $id = $this->articleModel->insert($this->request->getPost());
+
+        if ($id === false) {
+            dd($this->articleModel->errors());
+        }
+
+        dd($id);
     }
 }
