@@ -21,4 +21,13 @@ class Articles extends BaseController
 
         return view("Articles/index", ["articles" => $data]);
     }
+
+    public function show($id)
+    {
+        $article = $this->articleModel->find($id);
+
+        return view('Articles/show', [
+            'article' => $article,
+        ]);
+    }
 }
