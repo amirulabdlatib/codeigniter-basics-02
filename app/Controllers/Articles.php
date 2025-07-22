@@ -35,4 +35,9 @@ class Articles extends BaseController
     {
         return view('Articles/create');
     }
+
+    public function store()
+    {
+        $this->articleModel->insert($this->request->getPost());
+    }
 }
