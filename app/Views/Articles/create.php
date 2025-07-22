@@ -16,10 +16,10 @@
 <?= form_open("articles/store"); ?>
 
 <label for="title">Title</label>
-<input type="text" id="title" name="title">
+<input type="text" id="title" name="title" value="<?= old("title"); ?>">
 
 <label for="content">Content</label>
-<textarea type="text" id="content" name="content"></textarea>
+<textarea type="text" id="content" name="content"><?= old('content'); ?></textarea>
 
 <button type="submit">Create</button>
 

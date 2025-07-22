@@ -41,8 +41,10 @@ class Articles extends BaseController
         $id = $this->articleModel->insert($this->request->getPost());
 
         if ($id === false) {
-            return redirect()->back()
-                ->with("errors", $this->articleModel->errors());
+            return redirect()
+                ->back()
+                ->with("errors", $this->articleModel->errors())
+                ->withInput();
         }
 
         dd($id);
