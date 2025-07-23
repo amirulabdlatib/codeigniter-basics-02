@@ -88,6 +88,23 @@ class Articles extends BaseController
             ->with("errors", $this->articleModel->errors());
     }
 
+    public function delete($id)
+    {
+        $article = $this->getArticleor404($id);
+
+        if ($this->request->is('DELETE')) {
+            $this->articleModel->delete($id);
+
+            return redirect()
+                ->to(base_url('articles'))
+                ->with("message", "Article deleted.");
+        }
+
+        return view("articles/delete", [
+            'article' => $article,
+        ]);
+    }
+
     private function getArticleor404($id)
     {
         $article = $this->articleModel->find($id);
