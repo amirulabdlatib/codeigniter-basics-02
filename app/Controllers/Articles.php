@@ -51,4 +51,13 @@ class Articles extends BaseController
             ->to("articles/$id")
             ->with("message", "Article saved");;
     }
+
+    public function edit($id)
+    {
+        $article = $this->articleModel->find($id);
+
+        return view('Articles/edit', [
+            'article' => $article,
+        ]);
+    }
 }
