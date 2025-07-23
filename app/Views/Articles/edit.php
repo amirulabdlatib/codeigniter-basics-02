@@ -3,7 +3,7 @@
 
 <?= $this->section('content'); ?>
 
-<h1>Edit <?= $article['title']; ?></h1>
+<h1>Edit <?= $article->title; ?></h1>
 
 <?php if (session()->has("errors")): ?>
     <ul>
@@ -13,7 +13,7 @@
     </ul>
 <?php endif; ?>
 
-<?= form_open("articles/update/" . $article['id']); ?>
+<?= form_open("articles/update/" . $article->id); ?>
 <input type="hidden" name="_method" value="PUT">
 
 <?= $this->include('Articles/form'); ?>
