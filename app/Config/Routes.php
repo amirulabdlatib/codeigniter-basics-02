@@ -11,3 +11,4 @@ $routes->get('/articles/(:num)', 'Articles::show/$1');
 $routes->get('/articles/create', 'Articles::create');
 $routes->post('/articles/store', 'Articles::store');
 $routes->get('/articles/edit/(:num)', 'Articles::edit/$1');
+$routes->put('/articles/update/(:num)', 'Articles::update/$1');

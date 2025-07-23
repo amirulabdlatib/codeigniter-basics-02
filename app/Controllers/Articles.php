@@ -60,4 +60,15 @@ class Articles extends BaseController
             'article' => $article,
         ]);
     }
+
+    public function update($id)
+    {
+        if ($this->articleModel->update($id, $this->request->getPost())) {
+            return redirect()->to("articles/$id")
+                ->with("message", "Article Updated.");
+        }
+
+        return redirect()->back()
+            ->with("errors", $this->articleModel->errors());
+    }
 }
