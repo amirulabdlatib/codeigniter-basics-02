@@ -41,7 +41,9 @@ class Articles extends BaseController
 
     public function store()
     {
-        $id = $this->articleModel->insert($this->request->getPost());
+        $article = new Article($this->request->getPost());
+
+        $id = $this->articleModel->insert($article);
 
         if ($id === false) {
             return redirect()
