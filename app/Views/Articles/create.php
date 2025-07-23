@@ -13,7 +13,7 @@
     </ul>
 <?php endif; ?>
 
-<?= form_open("articles/store"); ?>
+<?= form_open("articles"); ?>
 
 <?= $this->include('Articles/form'); ?>
 
