@@ -77,7 +77,7 @@ class Articles extends BaseController
 
         if (!$article->hasChanged()) {
             return redirect()
-                ->back()
+                ->to(base_url('/articles'))
                 ->with("message", "Nothing to update.");
         }
 
