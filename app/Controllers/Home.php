@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        $this->sendTestEmail();
+        // $this->sendTestEmail();
         return view("Home/index.php");
     }
 
