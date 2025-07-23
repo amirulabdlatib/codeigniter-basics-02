@@ -26,11 +26,7 @@ class Articles extends BaseController
 
     public function show($id)
     {
-        $article = $this->articleModel->find($id);
-
-        if (!$article) {
-            throw  PageNotFoundException::forPageNotFound("Article not found");
-        }
+        $article = $this->getArticleor404($id);
 
         return view('Articles/show', [
             'article' => $article,
@@ -64,11 +60,7 @@ class Articles extends BaseController
 
     public function edit($id)
     {
-        $article = $this->articleModel->find($id);
-
-        if (!$article) {
-            throw  PageNotFoundException::forPageNotFound("Article not found");
-        }
+        $article = $this->getArticleor404($id);
 
         return view('Articles/edit', [
             'article' => $article,
@@ -77,11 +69,7 @@ class Articles extends BaseController
 
     public function update($id)
     {
-        $article = $this->articleModel->find($id);
-
-        if (!$article) {
-            throw  PageNotFoundException::forPageNotFound("Article not found");
-        }
+        $article = $this->getArticleor404($id);
 
         $article->fill($this->request->getPost());
 
@@ -98,5 +86,16 @@ class Articles extends BaseController
 
         return redirect()->back()
             ->with("errors", $this->articleModel->errors());
+    }
+
+    private function getArticleor404($id)
+    {
+        $article = $this->articleModel->find($id);
+
+        if (!$article) {
+            throw PageNotFoundException::forPageNotFound("Article not found");
+        }
+
+        return $article;
     }
 }
