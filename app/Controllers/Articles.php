@@ -73,6 +73,8 @@ class Articles extends BaseController
 
         $article->fill($this->request->getPost());
 
+        $article->__unset("_method");
+
         if (!$article->hasChanged()) {
             return redirect()
                 ->back()
