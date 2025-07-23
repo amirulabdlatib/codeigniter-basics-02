@@ -18,7 +18,7 @@ class Articles extends BaseController
 
     public function index()
     {
-        $articles = $this->articleModel->findAll(); // will return associative array
+        $articles = $this->articleModel->findAll();
 
         return view("Articles/index", ["articles" => $articles]);
     }
