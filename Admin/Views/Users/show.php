@@ -14,6 +14,9 @@
     <dt>Created</dt>
     <dd><?= esc($user->created_at->humanize()); ?></dd>
 
+    <dt>Groups</dt>
+    <dd><?= implode(",", $user->getGroups()); ?></dd>
+
 
     <?= form_open("admin/users/$user->id/toggle-ban"); ?>
     <button><?= $user->isBanned() ? "Unban" : "Ban"; ?></button>
