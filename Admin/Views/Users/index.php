@@ -10,6 +10,7 @@
             <th>Email</th>
             <th>First Name</th>
             <th>Active</th>
+            <th>Banned</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -18,7 +19,8 @@
             <tr>
                 <td><?= esc($user->email); ?></td>
                 <td><?= esc(!empty($user->first_name) ? $user->first_name : 'No name provided'); ?></td>
-                <td><?= esc($user->active ? 'Active' : "Inactive"); ?></td>
+                <td><?= $user->active ? 'Active' : "Inactive" ?></td>
+                <td><?= $user->isBanned() ? 'Yes' : 'No'; ?></td>
                 <td><a href="<?= base_url("/admin/users/$user->id"); ?>">Show</a></td>
             </tr>
         <?php endforeach; ?>
