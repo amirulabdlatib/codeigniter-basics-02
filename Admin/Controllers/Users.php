@@ -55,6 +55,16 @@ class Users extends BaseController
     {
         $user = $this->getUserOr404($id);
 
+        if ($this->request->is("post")) {
+            $groups = $this->request->getPost('groups') ?? [];
+
+            $user->syncGroups(...$groups);
+
+            return redirect()
+                ->to(base_url('admin/users'))
+                ->with("message", "User group update.");
+        }
+
         return view("Admin\Views\Users\groups", [
             "user" => $user,
         ]);
