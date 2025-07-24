@@ -15,7 +15,9 @@
 
             <a href="<?= url_to("Articles::index"); ?>">Articles</a>
 
-            <a href="<?= url_to("\Admin\Controllers\Users::index"); ?>">Users</a>
+            <?php if (auth()->user()->inGroup("admin")): ?>
+                <a href="<?= url_to("\Admin\Controllers\Users::index"); ?>">Users</a>
+            <?php endif; ?>
 
             <a href="<?= url_to("logout"); ?>">Logout</a>
             Hello <?= esc(auth()->user()->first_name); ?>
@@ -25,6 +27,9 @@
         <?php endif; ?>
     </nav>
 
+    <?php if (session()->has("error")): ?>
+        <p><?= session("error"); ?></p>
+    <?php endif; ?>
 
     <?php if (session()->has("message")): ?>
         <p><?= session("message"); ?></p>

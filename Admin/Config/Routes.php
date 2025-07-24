@@ -11,7 +11,7 @@ $routes->group(
     'admin',
     [
         'namespace' => 'Admin\Controllers',
-        'filter' => "session"
+        'filter' => "group:admin"
     ],
     function ($routes) {
         $routes->get("users", "Users::index");
