@@ -27,6 +27,11 @@
             <form action="<?= url_to('register') ?>" method="post">
                 <?= csrf_field() ?>
 
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="first_name" name="first_name" inputmode="text" placeholder="First Name" value="<?= old('first_name') ?>" autofocus required>
+                    <label for="first_name">First Name</label>
+                </div>
+
                 <!-- Email -->
                 <div class="form-floating mb-2">
                     <input type="email" class="form-control" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email') ?>" required>

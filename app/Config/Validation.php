@@ -43,6 +43,10 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
 
     public  $registration = [
+        'first_name' => [
+            'label' => 'First Name',
+            'rules' => 'required|min_length[3]'
+        ],
         'email' => [
             'label' => 'Auth.email',
             'rules' => [
