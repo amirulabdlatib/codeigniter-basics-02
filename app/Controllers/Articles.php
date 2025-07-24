@@ -69,6 +69,11 @@ class Articles extends BaseController
     {
         $article = $this->getArticleor404($id);
 
+        if (!$article->isOwner() && !auth()->user()->can("articles.delete")) {
+            return redirect()->to('/articles')
+                ->with('error', 'You do not have permission to edit the article.');
+        }
+
         return view('Articles/edit', [
             'article' => $article,
         ]);
@@ -78,6 +83,10 @@ class Articles extends BaseController
     {
         $article = $this->getArticleor404($id);
 
+        if (!$article->isOwner() && !auth()->user()->can("articles.edit")) {
+            return redirect()->to('/articles')
+                ->with('error', 'You do not have permission to update the article.');
+        }
         $article->fill($this->request->getPost());
 
         $article->__unset("_method");
@@ -100,6 +109,11 @@ class Articles extends BaseController
     public function delete($id)
     {
         $article = $this->getArticleor404($id);
+
+        if (!$article->isOwner() && !auth()->user()->can("articles.delete")) {
+            return redirect()->to('/articles')
+                ->with('error', 'You do not have permission to delete the article.');
+        }
 
         if ($this->request->is('DELETE')) {
             $this->articleModel->delete($id);
