@@ -7,8 +7,15 @@ use Config\Services;
 $routes = Services::routes();
 
 
-$routes->group('admin', ['namespace' => 'Admin\Controllers'], function ($routes) {
-    $routes->get("users", "Users::index");
-    $routes->get("users/(:num)", "Users::show/$1");
-    $routes->post("users/(:num)/toggle-ban", "Users::toggleBan/$1");
-});
+$routes->group(
+    'admin',
+    [
+        'namespace' => 'Admin\Controllers',
+        'filter' => "session"
+    ],
+    function ($routes) {
+        $routes->get("users", "Users::index");
+        $routes->get("users/(:num)", "Users::show/$1");
+        $routes->post("users/(:num)/toggle-ban", "Users::toggleBan/$1");
+    }
+);
