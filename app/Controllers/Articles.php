@@ -19,7 +19,10 @@ class Articles extends BaseController
 
     public function index()
     {
-        $articles = $this->articleModel->findAll();
+        $articles = $this->articleModel
+            ->select("articles.*, users.first_name")
+            ->join("users", "users.id = articles.users_id")
+            ->findAll();
 
         return view("Articles/index", ["articles" => $articles]);
     }

@@ -8,7 +8,10 @@
 
 <?php foreach ($articles as $article): ?>
     <article>
-        <h2><a href="<?= site_url('/articles/' . $article->id); ?>"><?= $article->title; ?></a> </h2>
+        <h2>
+            <a href="<?= site_url('/articles/' . $article->id); ?>"><?= $article->title; ?></a>
+        </h2>
+        <em>By <?= $article->first_name; ?></em>
         <p><?= $article->content; ?></p>
     </article>
 <?php endforeach; ?>
