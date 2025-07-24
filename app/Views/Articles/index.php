@@ -15,4 +15,6 @@
         <p><?= $article->content; ?></p>
     </article>
 <?php endforeach; ?>
+
+<?= $pager->simpleLinks(); ?>
 <?= $this->endSection(); ?>

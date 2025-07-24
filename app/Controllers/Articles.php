@@ -22,9 +22,13 @@ class Articles extends BaseController
         $articles = $this->articleModel
             ->select("articles.*, users.first_name")
             ->join("users", "users.id = articles.users_id")
-            ->findAll();
+            ->orderBy("created_at")
+            ->paginate(3);
 
-        return view("Articles/index", ["articles" => $articles]);
+        return view("Articles/index", [
+            "articles" => $articles,
+            "pager" => $this->articleModel->pager,
+        ]);
     }
 
     public function show($id)
