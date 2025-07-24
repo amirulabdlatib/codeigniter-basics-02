@@ -17,7 +17,7 @@ class Users extends BaseController
 
     public function index()
     {
-        $users = $this->model->paginate(3);
+        $users = $this->model->orderBy('created_at')->paginate(3);
 
         return view("Admin\Views\Users\index", [
             "users" => $users,
