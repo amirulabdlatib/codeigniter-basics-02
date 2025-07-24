@@ -38,6 +38,8 @@ class Password extends BaseController
 
         $model->save($user);
 
+        session()->removeTempdata("magicLogin");
+
         return redirect()
             ->to("/")
             ->with("message", "Password Changed successfully");
