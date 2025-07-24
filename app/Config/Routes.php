@@ -15,6 +15,6 @@ $routes->put('/articles/(:num)', 'Articles::update/$1');
 $routes->delete('/articles/(:num)', 'Articles::delete/$1');
 $routes->get('/articles/delete/(:num)', 'Articles::delete/$1');
 $routes->get("set-password", "Password::set");
-
+$routes->post("set-password", "Password::update");
 
 service('auth')->routes($routes);
