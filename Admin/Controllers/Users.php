@@ -4,6 +4,8 @@ namespace Admin\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Users extends BaseController
@@ -23,5 +25,25 @@ class Users extends BaseController
             "users" => $users,
             "pager" => $this->model->pager,
         ]);
+    }
+
+    public function show($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        return view("Admin\Views\Users\show", [
+            "user" => $user,
+        ]);
+    }
+
+    private function getUserOr404($id)
+    {
+        $user = $this->model->find($id);
+
+        if (!$user) {
+            throw PageNotFoundException::forPageNotFound("User not found");
+        }
+
+        return $user;
     }
 }

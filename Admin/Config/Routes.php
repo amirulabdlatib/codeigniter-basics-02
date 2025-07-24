@@ -7,3 +7,4 @@ use Config\Services;
 $routes = Services::routes();
 
 $routes->get("admin/users", "\Admin\Controllers\Users::index");
+$routes->get("admin/users/(:num)", "\Admin\Controllers\Users::show/$1");
