@@ -20,6 +20,12 @@
         <a href="<?= url_to("\Admin\Controllers\Users::groups", $user->id); ?>">Edit</a>
     </dd>
 
+    <dt>Pemissions</dt>
+    <dd>
+        <?= implode(",", $user->getPermissions()); ?>
+        <a href="<?= url_to("\Admin\Controllers\Users::permissions", $user->id); ?>">Edit</a>
+    </dd>
+
 
     <?= form_open("admin/users/$user->id/toggle-ban"); ?>
     <button><?= $user->isBanned() ? "Unban" : "Ban"; ?></button>

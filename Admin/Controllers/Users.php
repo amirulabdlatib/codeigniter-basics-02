@@ -70,6 +70,25 @@ class Users extends BaseController
         ]);
     }
 
+    public function permissions($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        if ($this->request->is("post")) {
+            $permissions = $this->request->getPost('permissions') ?? [];
+
+            $user->syncPermissions(...$permissions);
+
+            return redirect()
+                ->to(base_url('admin/users'))
+                ->with("message", "User group update.");
+        }
+
+        return view("Admin\Views\Users\permissions", [
+            "user" => $user,
+        ]);
+    }
+
     private function getUserOr404($id)
     {
         $user = $this->model->find($id);
