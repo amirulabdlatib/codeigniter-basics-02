@@ -15,7 +15,10 @@
     <dd><?= esc($user->created_at->humanize()); ?></dd>
 
     <dt>Groups</dt>
-    <dd><?= implode(",", $user->getGroups()); ?></dd>
+    <dd>
+        <?= implode(",", $user->getGroups()); ?>
+        <a href="<?= url_to("\Admin\Controllers\Users::groups", $user->id); ?>">Edit</a>
+    </dd>
 
 
     <?= form_open("admin/users/$user->id/toggle-ban"); ?>

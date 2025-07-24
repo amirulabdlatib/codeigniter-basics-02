@@ -51,6 +51,14 @@ class Users extends BaseController
             ->with("message", "User status changed");
     }
 
+    public function groups($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        return view("Admin\Views\Users\groups", [
+            "user" => $user,
+        ]);
+    }
 
     private function getUserOr404($id)
     {
