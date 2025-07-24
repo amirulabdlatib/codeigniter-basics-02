@@ -47,7 +47,9 @@ class ArticleModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
+    protected $beforeInsert   = [
+        "setUsersID",
+    ];
     protected $afterInsert    = [];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
@@ -55,4 +57,10 @@ class ArticleModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    protected function setUsersID(array $data)
+    {
+        $data["data"]["users_id"] = auth()->user()->id;
+        return $data;
+    }
 }
