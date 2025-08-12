@@ -20,7 +20,5 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('scripts');?>
-<script>
-    console.log("Hello world")
-</script>
+<script src="<?= base_url('js/article-show.js'); ?>"></script>
 <?= $this->endSection('scripts');?>
