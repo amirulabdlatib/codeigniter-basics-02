@@ -5,6 +5,8 @@
 <?= $this->section('content'); ?>
 
 <h1><?= $article->title; ?></h1>
+<a href="<?= base_url("/articles/{$article->id}/image/edit");?>">Edit image</a>
+
 <p><?= $article->content; ?></p>
 
 <?php if ($article->isOwner() || auth()->user()->can("articles.edit")): ?>
