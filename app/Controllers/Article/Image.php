@@ -31,7 +31,7 @@ class Image extends BaseController
     {
         $article = $this->getArticleor404($id);
         $file = $this->request->getFile("article_image");
-
+        
         if(!$file->isValid()){
             $error_code = $file->getError();
 
@@ -54,6 +54,9 @@ class Image extends BaseController
             return redirect()->back()
                              ->with("errors",["Invalid file format"]);
         }
+
+        $path = WRITEPATH . 'uploads/article_images';  // FCPATH for public directory
+        $file->move($path, $file->getClientName());
     }
 
     private function getArticleor404($id)
