@@ -11,12 +11,14 @@
         style="height: 100px; width: 100px" 
         src="<?= url_to("Article\Image::get", $article->id);?>" 
         alt="<?= $article->image;?>">
-        <?= form_open("articles/$article->id/image/delete");?>
+    <?= form_open("articles/$article->id/image/delete");?>
         <input type="hidden" name="_method" value="DELETE">
         <button>Delete</button>
+    </form>
+    <a href="<?= base_url("/articles/{$article->id}/image/edit");?>">Edit image</a>
+<?php else:?>
+        <a href="<?= base_url("/articles/{$article->id}/image/edit");?>">Add image</a>
 <?php endif; ?>
-<br>
-<a href="<?= base_url("/articles/{$article->id}/image/edit");?>">Edit image</a>
 
 <p><?= $article->content; ?></p>
 
