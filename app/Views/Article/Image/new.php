@@ -3,7 +3,7 @@
 
 
 <?= $this->section("content");?>
-<h1>Edit <?= $article->title; ?></h1>
+<h1>Edit Image :<?= $article->title; ?></h1>
 
 <?php if (session()->has("errors")): ?>
     <ul>
@@ -17,5 +17,7 @@
 <input type="hidden" name="_method" value="PATCH">
 
 </form>
+
+<a href="<?= base_url("/articles/{$article->id}");?>">Back to article detail</a>
 <?= $this->endSection("content");?>
 
