@@ -17,6 +17,7 @@ $routes->group('', ['filter' => 'login'], function ($routes) {
     $routes->delete('/articles/(:num)', 'Articles::delete/$1');
     $routes->get('/articles/delete/(:num)', 'Articles::delete/$1');
     $routes->get('/articles/(:num)/image/edit','Article\Image::new/$1');
+    $routes->post("/articles/(:num)/image/create","Article\Image::create/$1");
 
     $routes->get("set-password", "Password::set");
     $routes->post("set-password", "Password::update");

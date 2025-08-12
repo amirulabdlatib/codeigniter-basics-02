@@ -13,9 +13,10 @@
     </ul>
 <?php endif; ?>
 
-<?= form_open("articles/" . $article->id); ?>
-<input type="hidden" name="_method" value="PATCH">
-
+<?= form_open_multipart("articles/" . $article->id . "/image/create"); ?>
+    <label for="image">Image file</label>
+    <input type="file" name="article_image" id="article_image">
+    <button type="submit">Upload</button>
 </form>
 
 <a href="<?= base_url("/articles/{$article->id}");?>">Back to article detail</a>

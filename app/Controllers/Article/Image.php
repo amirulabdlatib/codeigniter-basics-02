@@ -26,6 +26,15 @@ class Image extends BaseController
         ]);
     }
 
+    public function create($id)
+    {
+        $article = $this->getArticleor404($id);
+
+        $file = $this->request->getFile("article_image");
+
+        dd($file);
+    }
+
     private function getArticleor404($id)
     {
         $article = $this->articleModel->find($id);
