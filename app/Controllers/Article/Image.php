@@ -32,8 +32,6 @@ class Image extends BaseController
         $article = $this->getArticleor404($id);
         $file = $this->request->getFile("article_image");
 
-        dd($file);
-
         if(!$file->isValid()){
             $error_code = $file->getError();
 
