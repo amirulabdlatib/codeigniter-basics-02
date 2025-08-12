@@ -19,6 +19,8 @@
         <p><?= session("message"); ?></p>
     <?php endif; ?>
     <?= $this->renderSection('content'); ?>
+
+    <?= $this->renderSection('scripts');?>
 </body>
 
 </html>

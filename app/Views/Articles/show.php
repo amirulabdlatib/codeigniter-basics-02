@@ -18,3 +18,9 @@
 
 
 <?= $this->endSection(); ?>
+
+<?= $this->section('scripts');?>
+<script>
+    console.log("Hello world")
+</script>
+<?= $this->endSection('scripts');?>
