@@ -5,6 +5,14 @@
 <?= $this->section('content'); ?>
 
 <h1><?= $article->title; ?></h1>
+
+<?php if($article->image): ?>
+    <img
+        style="height: 100px; width: 100px" 
+        src="<?= url_to("Article\Image::get", $article->id);?>" 
+        alt="<?= $article->image;?>">
+<?php endif; ?>
+<br>
 <a href="<?= base_url("/articles/{$article->id}/image/edit");?>">Edit image</a>
 
 <p><?= $article->content; ?></p>
