@@ -14,7 +14,7 @@
 <?php endif; ?>
 
 <?= form_open_multipart("articles/" . $article->id . "/image/create"); ?>
-    <label for="image">Image file</label>
+    <label for="article_image">Image file</label>
     <input type="file" name="article_image" id="article_image">
 
     <?php if (session()->has("errors")): ?>
