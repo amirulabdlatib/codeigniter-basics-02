@@ -11,6 +11,9 @@
         style="height: 100px; width: 100px" 
         src="<?= url_to("Article\Image::get", $article->id);?>" 
         alt="<?= $article->image;?>">
+        <?= form_open("articles/$article->id/image/delete");?>
+
+        <button>Delete</button>
 <?php endif; ?>
 <br>
 <a href="<?= base_url("/articles/{$article->id}/image/edit");?>">Edit image</a>
