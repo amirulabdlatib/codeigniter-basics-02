@@ -6,6 +6,7 @@ use App\Models\ArticleModel;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use finfo;
 use RuntimeException;
 
 class Image extends BaseController
@@ -65,6 +66,24 @@ class Image extends BaseController
 
         return redirect()->to("articles/$id")
                          ->with("message","Image uploaded");
+    }
+
+    public function get($id)
+    {
+        $article = $this->getArticleor404($id);
+
+        if($article->image){
+            
+            $path = WRITEPATH . "uploads/article_images/" . $article->image;
+            $finfo = new finfo(FILEINFO_MIME);
+            $type = $finfo->file($path);
+
+            header("Content-Type: $type");
+            header("Content-Length: ". filesize($path));
+
+            readfile($path);
+            exit;
+        }
     }
 
     private function getArticleor404($id)
