@@ -8,7 +8,7 @@
 <?php if (session()->has("errors")): ?>
     <ul>
         <?php foreach (session("errors") as $error): ?>
-            <li><?= $error; ?></li>
+            <li style="color: red;"><?= $error; ?></li>
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>
@@ -16,6 +16,13 @@
 <?= form_open_multipart("articles/" . $article->id . "/image/create"); ?>
     <label for="image">Image file</label>
     <input type="file" name="article_image" id="article_image">
+
+    <?php if (session()->has("errors")): ?>
+        <div style="color: red;">
+            <?= esc(session("errors")[0]) ?>
+        </div>
+    <?php endif; ?>
+
     <button type="submit">Upload</button>
 </form>
 
