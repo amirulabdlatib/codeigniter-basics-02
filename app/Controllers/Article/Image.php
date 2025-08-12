@@ -6,6 +6,7 @@ use App\Models\ArticleModel;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use RuntimeException;
 
 class Image extends BaseController
 {
@@ -29,10 +30,18 @@ class Image extends BaseController
     public function create($id)
     {
         $article = $this->getArticleor404($id);
-
         $file = $this->request->getFile("article_image");
 
-        dd($file);
+        if(!$file->isValid()){
+            $error_code = $file->getError();
+
+            if($error_code == UPLOAD_ERR_NO_FILE){
+                return redirect()->back()
+                                 ->with("errors",["No file selected"]);
+            }
+
+            throw new RuntimeException($file->getErrorString() . " " . $error_code);
+        }
     }
 
     private function getArticleor404($id)
