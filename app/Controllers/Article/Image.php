@@ -55,8 +55,16 @@ class Image extends BaseController
                              ->with("errors",["Invalid file format"]);
         }
 
+        // save to folder project
         $path = WRITEPATH . 'uploads/article_images';  // FCPATH for public directory
         $file->move($path, $file->getClientName());
+
+        // save path to database
+        $article->image = $file->getName();
+        $this->articleModel->save($article);
+
+        return redirect()->to("articles/$id")
+                         ->with("message","Image uploaded");
     }
 
     private function getArticleor404($id)

@@ -13,7 +13,7 @@ class ArticleModel extends Model
     protected $returnType       = Article::class;
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title', 'content'];
+    protected $allowedFields    = ['title', 'content', 'image'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
