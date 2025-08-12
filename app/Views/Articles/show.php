@@ -12,7 +12,7 @@
         src="<?= url_to("Article\Image::get", $article->id);?>" 
         alt="<?= $article->image;?>">
         <?= form_open("articles/$article->id/image/delete");?>
-
+        <input type="hidden" name="_method" value="DELETE">
         <button>Delete</button>
 <?php endif; ?>
 <br>
