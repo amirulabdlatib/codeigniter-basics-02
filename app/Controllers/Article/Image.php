@@ -32,6 +32,8 @@ class Image extends BaseController
         $article = $this->getArticleor404($id);
         $file = $this->request->getFile("article_image");
 
+        dd($file);
+
         if(!$file->isValid()){
             $error_code = $file->getError();
 
@@ -41,6 +43,18 @@ class Image extends BaseController
             }
 
             throw new RuntimeException($file->getErrorString() . " " . $error_code);
+        }
+        
+        // size
+        if($file->getSizeByUnit("mb") > 2){
+            return redirect()->back()
+                            ->with("errors",["File too large"]);
+        }
+        
+        // type
+        if(!in_array($file->getMimeType(),["image/png","image/jpeg","image/jpg"])){
+            return redirect()->back()
+                             ->with("errors",["Invalid file format"]);
         }
     }
 
